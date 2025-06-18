@@ -1,208 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sala do Futuro</title>
-  <link rel="icon" href="conteudo_logo.ico" type="image/x-icon" />
+  <link rel="icon" href="conteudo_logo.ico" type="image/x-icon">
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f5f5;
-      display: flex;
-      min-height: 100vh;
+      background-color: #f1f6fb;
       color: #333;
     }
-    .sidebar {
-      width: 220px;
-      background-color: #e0e0e0;
-      padding: 20px;
+    .container {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    }
-    .sidebar h2 {
-      font-size: 1.4rem;
-      color: #222;
-    }
-    .tab-btn {
-      background: none;
-      border: none;
-      text-align: left;
-      font-size: 1rem;
-      color: #444;
-      padding: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .tab-btn:hover,
-    .tab-btn.active {
-      background-color: #ccc;
-    }
-    main {
-      flex: 1;
+      flex-wrap: wrap;
       padding: 30px;
+      justify-content: center;
+      gap: 30px;
     }
-    section.tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
+    .left-panel {
+      flex: 1 1 500px;
+      background: linear-gradient(to bottom right, #3a9bdc, #a7d4f7);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      max-width: 600px;
     }
-    section.tab-content.active {
-      display: block;
+    .left-panel h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    .left-panel strong {
+      color: #fff;
     }
-
-    form.login-form {
+    .left-panel ul {
+      margin: 10px 0 20px 20px;
+    }
+    .right-panel {
+      flex: 1 1 300px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
       max-width: 400px;
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
+      text-align: center;
     }
-    form.login-form h2 {
+    .right-panel img.logo {
+      width: 220px;
       margin-bottom: 20px;
     }
-    form.login-form label {
-      display: block;
-      margin-top: 15px;
+    .right-panel h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
     }
-    form.login-form input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #bbb;
-      border-radius: 6px;
-    }
-    form.login-form input[type="submit"] {
-      margin-top: 20px;
-      background-color: #444;
-      color: white;
+    .profile-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f5f5f5;
       border: none;
-      font-weight: bold;
+      border-radius: 10px;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      margin: 10px 0;
       cursor: pointer;
+      transition: background-color 0.2s;
     }
-    form.login-form input[type="submit"]:hover {
-      background-color: #222;
+    .profile-btn:hover {
+      background-color: #e0e0e0;
     }
-    .msg {
-      margin-top: 15px;
+    .arrow {
+      font-size: 1.5rem;
+      color: #888;
+    }
+    footer {
       text-align: center;
-      font-weight: bold;
-    }
-    .msg.success {
-      color: green;
-    }
-    .msg.error {
-      color: red;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
-<div class="sidebar">
-  <h2>Sala do Futuro</h2>
-  <button class="tab-btn active" data-target="home">🏠 Home</button>
-  <button class="tab-btn" data-target="atividades">📚 Atividades</button>
-  <button class="tab-btn" data-target="contato">📞 Contato</button>
-  <button class="tab-btn" data-target="login">🔐 Login</button>
+<div class="container">
+  <div class="left-panel">
+    <h1>Você sabe o que é a <strong>SALA DO FUTURO?</strong></h1>
+    <p>A Sala do Futuro nasceu para transformar a experiência educacional, conectando alunos, pais e responsáveis com recursos que simplificam e enriquecem o <strong>processo de aprendizagem</strong>.</p>
+
+    <p><strong>Benefícios para os estudantes:</strong></p>
+    <ul>
+      <li><strong>Acesso centralizado:</strong> informações sobre boletins, frequência, tarefas e agenda escolar.</li>
+      <li><strong>Recursos educativos:</strong> materiais das aulas, bibliotecas virtuais e plataformas para redações e estudos.</li>
+      <li><strong>Praticidade:</strong> tudo em um só lugar, facilitando a organização da rotina escolar.</li>
+    </ul>
+
+    <p><strong>Benefícios para pais e responsáveis:</strong></p>
+    <ul>
+      <li><strong>Transparência:</strong> consulta ao boletim escolar, frequência e acompanhamento das tarefas.</li>
+      <li><strong>Organização:</strong> visão clara do calendário escolar e dos compromissos acadêmicos.</li>
+    </ul>
+  </div>
+
+  <div class="right-panel">
+    <img src="logo_sala_do_futuro.png" alt="Sala do Futuro" class="logo">
+    <p style="font-size: 0.9rem; color: #666; text-align: right; margin-bottom: 20px;">
+      Precisa de ajuda? <a href="#" style="color:#0066cc; text-decoration: none;">Clique aqui</a>
+    </p>
+    <h2>Olá, novamente!</h2>
+    <p style="margin-bottom: 20px; color: #444">Já estávamos sentindo sua falta.<br>Escolha abaixo um perfil para acessar.</p>
+
+    <button class="profile-btn">Sou Estudante <span class="arrow">&rarr;</span></button>
+    <button class="profile-btn">Sou Servidor <span class="arrow">&rarr;</span></button>
+    <button class="profile-btn">Sou Responsável <span class="arrow">&rarr;</span></button>
+  </div>
 </div>
 
-<main>
-  <section id="home" class="tab-content active">
-    <h1>Bem-vindo à Sala do Futuro</h1>
-    <p>Este é o seu espaço educacional inteligente. Aqui você acessa tarefas, conteúdos e novidades da rede de ensino.</p>
-  </section>
-
-  <section id="atividades" class="tab-content">
-    <h1>Atividades</h1>
-    <ul>
-      <li>📘 Matemática – Álgebra e Equações</li>
-      <li>📗 História – Brasil Colônia</li>
-      <li>📙 Ciências – Sistema Solar</li>
-    </ul>
-  </section>
-
-  <section id="contato" class="tab-content">
-    <h1>Contato</h1>
-    <p>Suporte técnico e pedagógico:</p>
-    <p>Email: suporte@saladofuturo.sp.gov.br</p>
-  </section>
-
-  <section id="login" class="tab-content">
-    <form class="login-form" id="loginForm">
-      <h2>Login do Aluno</h2>
-      <label for="user">Usuário:</label>
-      <input type="text" id="user" name="user" placeholder="RA ou e-mail" required />
-
-      <label for="pass">Senha:</label>
-      <input type="password" id="pass" name="pass" placeholder="Senha" required />
-
-      <input type="submit" value="Entrar" />
-      <div class="msg" id="msg"></div>
-    </form>
-  </section>
-
-  <section id="painel" class="tab-content">
-    <h1>👋 Olá, Tavvy!</h1>
-    <p>Você acessou seu painel personalizado. Aqui estarão suas atividades pendentes e progresso.</p>
-    <ul>
-      <li>✅ Tarefa de Matemática entregue</li>
-      <li>🕒 História – prazo até 20/06</li>
-      <li>📌 Nova tarefa de Ciências disponível</li>
-    </ul>
-  </section>
-</main>
-
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const target = tab.dataset.target;
-      contents.forEach(c => {
-        c.classList.remove('active');
-        if (c.id === target) c.classList.add('active');
-      });
-    });
-  });
-
-  const form = document.getElementById('loginForm');
-  const msg = document.getElementById('msg');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const user = form.user.value.trim();
-    const pass = form.pass.value.trim();
-
-    if (user === 'tavvy' && pass === 'futuro123') {
-      msg.textContent = 'Login bem-sucedido!';
-      msg.className = 'msg success';
-      setTimeout(() => {
-        document.querySelector('.tab-btn.active').classList.remove('active');
-        tabs.forEach(t => {
-          if (t.dataset.target === 'painel') t.classList.add('active');
-        });
-        contents.forEach(c => c.classList.remove('active'));
-        document.getElementById('painel').classList.add('active');
-      }, 1000);
-    } else {
-      msg.textContent = 'Usuário ou senha incorretos!';
-      msg.className = 'msg error';
-    }
-  });
-</script>
+<footer>
+  <p>SP.GOV.BR</p>
+</footer>
 
 </body>
 </html>
