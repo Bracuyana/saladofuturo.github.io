@@ -1,7 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sala Do Futuro</title>
+  <title>Sala do Futuro</title>
   <link rel="icon" href="conteudo_logo.ico" type="image/x-icon" />
-  <!-- o resto do seu head -->
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      min-height: 100vh;
+      color: #333;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #e0e0e0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    .sidebar h2 {
+      font-size: 1.4rem;
+      color: #222;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      color: #444;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .tab-btn:hover,
+    .tab-btn.active {
+      background-color: #ccc;
+    }
+    main {
+      flex: 1;
+      padding: 30px;
+    }
+    section.tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    section.tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    form.login-form {
+      max-width: 400px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    form.login-form h2 {
+      margin-bottom: 20px;
+    }
+    form.login-form label {
+      display: block;
+      margin-top: 15px;
+    }
+    form.login-form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+    }
+    form.login-form input[type="submit"] {
+      margin-top: 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    form.login-form input[type="submit"]:hover {
+      background-color: #222;
+    }
+    .msg {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .msg.success {
+      color: green;
+    }
+    .msg.error {
+      color: red;
+    }
+  </style>
 </head>
+<body>
+
+<div class="sidebar">
+  <h2>Sala do Futuro</h2>
+  <button class="tab-btn active" data-target="home">🏠 Home</button>
+  <button class="tab-btn" data-target="atividades">📚 Atividades</button>
+  <button class="tab-btn" data-target="contato">📞 Contato</button>
+  <button class="tab-btn" data-target="login">🔐 Login</button>
+</div>
+
+<main>
+  <section id="home" class="tab-content active">
+    <h1>Bem-vindo à Sala do Futuro</h1>
+    <p>Este é o seu espaço educacional inteligente. Aqui você acessa tarefas, conteúdos e novidades da rede de ensino.</p>
+  </section>
+
+  <section id="atividades" class="tab-content">
+    <h1>Atividades</h1>
+    <ul>
+      <li>📘 Matemática – Álgebra e Equações</li>
+      <li>📗 História – Brasil Colônia</li>
+      <li>📙 Ciências – Sistema Solar</li>
+    </ul>
+  </section>
+
+  <section id="contato" class="tab-content">
+    <h1>Contato</h1>
+    <p>Suporte técnico e pedagógico:</p>
+    <p>Email: suporte@saladofuturo.sp.gov.br</p>
+  </section>
+
+  <section id="login" class="tab-content">
+    <form class="login-form" id="loginForm">
+      <h2>Login do Aluno</h2>
+      <label for="user">Usuário:</label>
+      <input type="text" id="user" name="user" placeholder="RA ou e-mail" required />
+
+      <label for="pass">Senha:</label>
+      <input type="password" id="pass" name="pass" placeholder="Senha" required />
+
+      <input type="submit" value="Entrar" />
+      <div class="msg" id="msg"></div>
+    </form>
+  </section>
+
+  <section id="painel" class="tab-content">
+    <h1>👋 Olá, Tavvy!</h1>
+    <p>Você acessou seu painel personalizado. Aqui estarão suas atividades pendentes e progresso.</p>
+    <ul>
+      <li>✅ Tarefa de Matemática entregue</li>
+      <li>🕒 História – prazo até 20/06</li>
+      <li>📌 Nova tarefa de Ciências disponível</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const target = tab.dataset.target;
+      contents.forEach(c => {
+        c.classList.remove('active');
+        if (c.id === target) c.classList.add('active');
+      });
+    });
+  });
+
+  const form = document.getElementById('loginForm');
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const user = form.user.value.trim();
+    const pass = form.pass.value.trim();
+
+    if (user === 'tavvy' && pass === 'futuro123') {
+      msg.textContent = 'Login bem-sucedido!';
+      msg.className = 'msg success';
+      setTimeout(() => {
+        document.querySelector('.tab-btn.active').classList.remove('active');
+        tabs.forEach(t => {
+          if (t.dataset.target === 'painel') t.classList.add('active');
+        });
+        contents.forEach(c => c.classList.remove('active'));
+        document.getElementById('painel').classList.add('active');
+      }, 1000);
+    } else {
+      msg.textContent = 'Usuário ou senha incorretos!';
+      msg.className = 'msg error';
+    }
+  });
+</script>
+
+</body>
+</html>
